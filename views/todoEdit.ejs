@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <ul class="lamp">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="container">
+        <h2>Sachen, die ich tun muss</h2>
+        <div class="todo">
+        <form action="" method="POST" class="header">
+            <input type="text" name="content" placeholder="z. B. die Hirsche füttern">
+            <button type="submit"><span class="material-icons">playlist_add</span></button>
+        </form>
+            <ul class="todo-list">
+                <% todoTasks.forEach(details => { %>
+                <% if (details._id == idTask) { %>
+                <li class="todo-list-item">
+                    <form action="/edit/<%= details._id %>" method="POST">
+                        <input type="text" value="<%= details.content %>" name="content">
+                        <button type="submit" class="submit"><span class="material-icons">check_circle</span></button>
+                        <a href="/" class="cancel"><span class="material-icons">cancel</span></button>
+                        </a>
+                    </form>
+                </li>
+<% } else { %>
+                <li class="todo-list-item">
+                    <div class="todo-list-item-name"><%= details.content %></div>
+                    <a href="/edit/<%= details._id %>" class="edit"><i class="material-icons">mode_edit</i></a>
+                    <a href="/remove/<%= details._id %>" class="remove"><span class="material-icons">delete_sweep</span></span></a>
+                </li>
+<% } %>
+<% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

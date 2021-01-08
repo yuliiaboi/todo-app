@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+
+    <title>
+        To-do-App
+    </title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        function myFunction() {
+    document.getElementById("todo-list-item-name").style.cssText = 'text-decoration: line-through';
+}
+    </script>
+</head>
+
+<body>
+    <ul class="lamp">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="container">
+        <h2>Sachen, die ich tun muss</h2>
+        <div class="todo">
+            <form action="/" method="POST" class="header">
+            <input type="text" name="content" placeholder="z. B. die Hirsche füttern">
+            <button type="submit"><span class="material-icons">playlist_add</span></button>
+            </form>
+
+            <ul class="todo-list">
+                <% todoTasks.forEach(details => { %>
+                <li class="todo-list-item">
+                <div class="todo-list-item-name" id="todo-list-item-name"><%= details.content %></div>
+                <button class="done" onclick="myFunction()">
+                    <span class="material-icons">playlist_add_check</span>
+                </button>                
+                <a href="/edit/<%= details._id %>" class="edit">
+                    <span class="material-icons">mode_edit</span>
+                </a>
+                <a href="/remove/<%= details._id %>" class="remove">
+                    <span class="material-icons">delete_sweep</span>
+                </a>
+                </li>
+                <% }) %>
+                </ul>    
+        </div>
+    </div>
+</body>
+</html>
